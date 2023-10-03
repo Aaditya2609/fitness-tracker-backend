@@ -15,8 +15,8 @@ const getGoals=async (req, res) => {
   const postGoals=async (req, res) => {
     try {
       const { name, description, targetDate, targetCaloriesValue, status } = req.body;
-  
-      const goal = new Goals({ name, description, targetDate, targetCaloriesValue, status });
+      const convertedDate=new Date(targetDate)
+      const goal = new Goals({ name, description, convertedDate, targetCaloriesValue, status });
       const createdGoals=await goal.save();
       if(createdGoals)
       res.status(201).json(createdGoals);
