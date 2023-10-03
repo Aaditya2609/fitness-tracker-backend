@@ -9,7 +9,9 @@ import { initializeDatabase } from './db/db.connection';
 
 const app = express();
 app.use(urlencoded({extended:true}));
-app.use(cors());
+app.use(cors({
+  origin:"*"
+}));
 const port=process.env.port||3000;
 
 dotenv.config();
