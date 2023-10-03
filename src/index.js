@@ -8,6 +8,8 @@ import * as dotenv from "dotenv";
 import { initializeDatabase } from './db/db.connection';
 
 const app = express();
+app.use(urlencoded({extended:true}));
+app.use(cors());
 const port=process.env.port||3000;
 
 dotenv.config();
@@ -17,8 +19,7 @@ app.use("/api/exercises",exerciseRouter);
 app.use("/api/food",foodRouter);
 app.use("/api/goal",goalsRouter);
 
-app.use(urlencoded({extended:true}));
-app.use(cors())
+
 
 app.get('/', (req, res) => {
   res.send('Hello, Express!');
