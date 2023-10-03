@@ -40,7 +40,6 @@ const getExercises=async (req, res) => {
 
 const postExercises=async (req, res) => {
     try {
-        
     const { name, duration } = req.body;
     const calories = calculateCalories(name, duration);
     if (!name || !duration) {

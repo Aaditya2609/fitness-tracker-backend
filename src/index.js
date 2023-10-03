@@ -6,22 +6,21 @@ import {router as goalsRouter} from "./routers/goals.router"
 import cors from "cors";
 import * as dotenv from "dotenv";
 import { initializeDatabase } from './db/db.connection';
+dotenv.config();
 
 const app = express();
-app.use(urlencoded({extended:true}));
+
+app.use(express.json({ limit: "50mb" }));
+app.use(urlencoded({ extended: true }));
 app.use(cors({
   origin:"*"
 }));
-const port=process.env.port||3000;
-
-dotenv.config();
 initializeDatabase();
+const port=process.env.port||3000;
 
 app.use("/api/exercises",exerciseRouter);
 app.use("/api/food",foodRouter);
 app.use("/api/goal",goalsRouter);
-
-
 
 app.get('/', (req, res) => {
   res.send('Hello, Express!');

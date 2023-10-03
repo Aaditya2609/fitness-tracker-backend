@@ -15,6 +15,7 @@ const getGoals=async (req, res) => {
   const postGoals=async (req, res) => {
     try {
       const { name, description, targetDate, targetCaloriesValue, status } = req.body;
+  
       const goal = new Goals({ name, description, targetDate, targetCaloriesValue, status });
       const createdGoals=await goal.save();
       if(createdGoals)
@@ -23,7 +24,7 @@ const getGoals=async (req, res) => {
     res.status(400).json({message:"Goal not added"})
     }
     catch (error) {
-      res.status(500).json({ error: error });
+      res.status(500).json({ error: 'Error adding Goal.' });
     }
   }
 
