@@ -16,6 +16,7 @@ initializeDatabase();
 app.use("/api/exercises",exerciseRouter);
 app.use("/api/food",foodRouter);
 app.use("/api/goal",goalsRouter);
+
 app.use(urlencoded({extended:true}));
 app.use(cors())
 
