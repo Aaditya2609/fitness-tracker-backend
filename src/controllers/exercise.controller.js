@@ -40,6 +40,7 @@ const getExercises=async (req, res) => {
 
 const postExercises=async (req, res) => {
     try {
+
     const { name, duration } = req.body;
     const calories = calculateCalories(name, duration);
     if (!name || !duration) {
@@ -52,6 +53,7 @@ const postExercises=async (req, res) => {
     else
     res.status(400).json({message:"Exercise not added"})
     } catch (err) {
+      
       res.status(500).json({ error: 'Error adding exercise.' });
     }
   }
