@@ -13,7 +13,8 @@ const app = express();
 app.use(express.json({ limit: "50mb" }));
 app.use(urlencoded({ extended: true }));
 app.use(cors({
-  origin:"*"
+  origin:"*",
+  methods:["GET","POST","DELETE"]
 }));
 initializeDatabase();
 const port=process.env.port||3000;
